@@ -34,16 +34,6 @@ Ao iniciar este projeto, você concorda com as diretrizes do [Código de Conduta
 :rocket: Lembre-se que você pode ir além e deixar o projeto com a sua cara e impressionar todas as pessoas! :rocket:
 </details>
 
-<details>
-  <summary><strong>🗓 Data de Entrega</strong></summary><br />
-  
-- Este projeto é individual;
-- São `X` dias de projeto;
-- Data para entrega final do projeto: `12/07/2022 14:10`.
-
-</details>
-
-
 # Orientações
 
 <details>
