@@ -5,3 +5,7 @@ main.appendChild(header);
 const headerTitle = document.createElement('h1');
 header.appendChild(headerTitle);
 headerTitle.innerText = 'Minha Lista de Tarefas';
+const funcionamento = document.createElement('h2');
+funcionamento.innerText = 'Clique duas vezes em um item para marcá-lo como completo';
+funcionamento.id = 'funcionamento';
+header.appendChild(funcionamento);
