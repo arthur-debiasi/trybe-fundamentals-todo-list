@@ -21,6 +21,11 @@ buttonCriarTarefa.id = 'criar-tarefa';
 buttonCriarTarefa.innerText = 'Criar Tarefa';
 main.appendChild(buttonCriarTarefa);
 
+const buttonLimparTarefas = document.createElement('button');
+buttonLimparTarefas.id = 'apaga-tudo';
+buttonLimparTarefas.innerText = 'Limpar Tarefas';
+main.appendChild(buttonLimparTarefas);
+
 const oList = document.createElement('ol');
 oList.id = 'lista-tarefas';
 main.appendChild(oList);
@@ -62,3 +67,12 @@ function tarefasConcluidas(event) {
 }
 
 document.addEventListener('dblclick', tarefasConcluidas);
+
+function limparTarefas() {
+  const tarefas = document.querySelectorAll('.tarefa');
+  for (let i = 0; i < tarefas.length; i += 1) {
+    tarefas[i].remove();
+  }
+}
+
+buttonLimparTarefas.addEventListener('click', limparTarefas);
