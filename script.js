@@ -7,8 +7,7 @@ header.appendChild(headerTitle);
 headerTitle.innerText = 'Minha Lista de Tarefas';
 
 const funcionamento = document.createElement('h2');
-funcionamento.innerText =
-  'Clique duas vezes em um item para marcá-lo como completo';
+funcionamento.innerText = 'Clique duas vezes em um item para marcá-lo como completo';
 funcionamento.id = 'funcionamento';
 header.appendChild(funcionamento);
 
@@ -50,3 +49,16 @@ function tarefasClicadas(event) {
 }
 
 document.addEventListener('click', tarefasClicadas);
+
+function tarefasConcluidas(event) {
+  if (event.target.classList.contains('tarefa')) {
+    const concluida = 'completed';
+    if (event.target.classList.contains(concluida)) {
+      event.target.classList.remove(concluida);
+    } else {
+      event.target.classList.add(concluida);
+    }
+  }
+}
+
+document.addEventListener('dblclick', tarefasConcluidas);

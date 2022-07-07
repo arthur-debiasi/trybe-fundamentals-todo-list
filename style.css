@@ -5,3 +5,7 @@
 .tarefa {
     cursor: pointer;
 }
+
+.completed {
+    text-decoration: line-through solid black;
+}
