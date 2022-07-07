@@ -15,3 +15,7 @@ const inputTarefa = document.createElement('input');
 main.appendChild(inputTarefa);
 inputTarefa.type = 'text';
 inputTarefa.id = 'texto-tarefa';
+
+const oList = document.createElement('ol');
+oList.id = 'lista-tarefas';
+main.appendChild(oList);
