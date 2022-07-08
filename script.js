@@ -11,7 +11,8 @@ headerTitle.innerText = 'Minha Lista de Tarefas';
 headerTitle.classList.add('display-1');
 
 const funcionamento = document.createElement('h2');
-funcionamento.innerText = 'Clique duas vezes em um item para marcá-lo como completo';
+funcionamento.innerText =
+  'Clique duas vezes em um item para marcá-lo como completo';
 funcionamento.id = 'funcionamento';
 header.appendChild(funcionamento);
 
@@ -36,6 +37,12 @@ buttonLimparTarefas.classList.add('btn');
 buttonLimparTarefas.classList.add('btn-outline-secondary');
 main.appendChild(buttonLimparTarefas);
 
+const salvarTarefasBtn = document.createElement('button');
+salvarTarefasBtn.innerHTML = 'Salvar Tarefas!';
+salvarTarefasBtn.classList.add('btn');
+salvarTarefasBtn.classList.add('btn-outline-success');
+main.appendChild(salvarTarefasBtn);
+
 const buttonTarefasConcluidas = document.createElement('button');
 buttonTarefasConcluidas.id = 'remover-finalizados';
 buttonTarefasConcluidas.innerText = 'Remover Tarefas Concluídas';
@@ -51,7 +58,6 @@ main.appendChild(oList);
 function criarTarefa(event) {
   if (event.target.id === 'criar-tarefa') {
     const tarefaTexto = inputTarefa.value;
-    console.log(tarefaTexto);
     inputTarefa.value = '';
     const novaTarefa = document.createElement('li');
     novaTarefa.innerText = tarefaTexto;
@@ -104,3 +110,34 @@ function removerConcluidas() {
 }
 
 buttonTarefasConcluidas.addEventListener('click', removerConcluidas);
+
+function salvarTarefas() {
+  const lista = oList.children;
+  const tarefaObjArray = [];
+  for (let i = 0; i < lista.length; i += 1) {
+    let tarefaObj = {};
+    tarefaObj.texto = lista[i].innerText;
+    tarefaObj.classe = lista[i].className;
+    tarefaObjArray[i] = tarefaObj;
+  }
+  localStorage.clear();
+  localStorage.setItem('lista', JSON.stringify(tarefaObjArray));
+}
+
+salvarTarefasBtn.addEventListener('click', salvarTarefas);
+
+function carregarTarefas() {
+  if (localStorage.length !== 0) {
+    const listaRecuperada = JSON.parse(localStorage.getItem('lista'));
+    for (let i = 0; i < listaRecuperada.length; i += 1) {
+      let novoListItem = document.createElement('li');
+      novoListItem.innerText = listaRecuperada[i].texto;
+      novoListItem.className = listaRecuperada[i].classe;
+      oList.appendChild(novoListItem);
+    }
+  }
+}
+
+window.onload = function onLoad() {
+  carregarTarefas();
+};
