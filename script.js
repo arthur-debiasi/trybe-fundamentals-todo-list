@@ -20,12 +20,26 @@ inputTarefa.classList.add('form-control');
 
 const buttonCriarTarefa = document.createElement('button');
 buttonCriarTarefa.id = 'criar-tarefa';
-buttonCriarTarefa.innerText = 'Criar Tarefa';
+buttonCriarTarefa.innerText = 'Adicionar';
 buttonCriarTarefa.type = 'button';
 buttonCriarTarefa.classList.add('btn');
 const primary = 'btn-outline-primary';
 buttonCriarTarefa.classList.add(primary);
 todoContainer.appendChild(buttonCriarTarefa);
+
+const salvarTarefasBtn = document.createElement('button');
+salvarTarefasBtn.innerHTML = 'Salvar';
+salvarTarefasBtn.id = 'salvar-tarefas';
+salvarTarefasBtn.classList.add('btn');
+salvarTarefasBtn.classList.add('btn-outline-success');
+todoContainer.appendChild(salvarTarefasBtn);
+
+const buttonLimparTarefas = document.createElement('button');
+buttonLimparTarefas.id = 'apaga-tudo';
+buttonLimparTarefas.innerText = 'Limpar';
+buttonLimparTarefas.classList.add('btn');
+buttonLimparTarefas.classList.add('btn-outline-secondary');
+todoContainer.appendChild(buttonLimparTarefas);
 
 const buttonUp = document.createElement('button');
 buttonUp.id = 'mover-cima';
@@ -41,23 +55,16 @@ buttonDown.classList.add('btn');
 buttonDown.classList.add(primary);
 todoContainer.appendChild(buttonDown);
 
-const buttonLimparTarefas = document.createElement('button');
-buttonLimparTarefas.id = 'apaga-tudo';
-buttonLimparTarefas.innerText = 'Limpar Tarefas';
-buttonLimparTarefas.classList.add('btn');
-buttonLimparTarefas.classList.add('btn-outline-secondary');
-todoContainer.appendChild(buttonLimparTarefas);
-
-const salvarTarefasBtn = document.createElement('button');
-salvarTarefasBtn.innerHTML = 'Salvar Tarefas!';
-salvarTarefasBtn.id = 'salvar-tarefas';
-salvarTarefasBtn.classList.add('btn');
-salvarTarefasBtn.classList.add('btn-outline-success');
-todoContainer.appendChild(salvarTarefasBtn);
+const buttonRemoveSelecionada = document.createElement('button');
+buttonRemoveSelecionada.innerHTML = 'Remover Selecionada';
+buttonRemoveSelecionada.id = 'remover-selecionado';
+buttonRemoveSelecionada.classList.add('btn');
+buttonRemoveSelecionada.classList.add('btn-outline-dark');
+todoContainer.appendChild(buttonRemoveSelecionada);
 
 const buttonTarefasConcluidas = document.createElement('button');
 buttonTarefasConcluidas.id = 'remover-finalizados';
-buttonTarefasConcluidas.innerText = 'Remover Tarefas Concluídas';
+buttonTarefasConcluidas.innerText = 'Remover Concluídas';
 buttonTarefasConcluidas.classList.add('btn');
 buttonTarefasConcluidas.classList.add('btn-outline-danger');
 todoContainer.appendChild(buttonTarefasConcluidas);
@@ -176,3 +183,11 @@ function movesDown() {
   }
 }
 buttonDown.addEventListener('click', movesDown);
+
+function removerSelecionada() {
+  if (document.querySelector('.tarefa-clicada') !== null) {
+    document.querySelector('.tarefa-clicada').remove();
+  }
+}
+
+buttonRemoveSelecionada.addEventListener('click', removerSelecionada);
