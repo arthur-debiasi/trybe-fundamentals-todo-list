@@ -1,24 +1,13 @@
 document.body.classList.add('bg-dark');
 document.body.classList.add('bg-opacity-25');
 
-const header = document.querySelector('header');
-
-const headerTitle = document.createElement('h1');
-header.appendChild(headerTitle);
-headerTitle.innerText = 'Minha Lista de Tarefas';
-headerTitle.classList.add('display-1');
-
-const funcionamento = document.createElement('h2');
-// eslint-disable-next-line operator-linebreak
-funcionamento.innerText ='Clique duas vezes em um item para marcá-lo como completo';
-funcionamento.id = 'funcionamento';
-header.appendChild(funcionamento);
+// const header = document.querySelector('header');
 
 const main = document.querySelector('main');
 main.classList.add('container-sm');
 main.setAttribute('display', 'flex');
 
-let todoContainer = document.createElement('div');
+const todoContainer = document.createElement('div');
 main.appendChild(todoContainer);
 todoContainer.id = 'todo-container';
 todoContainer.className = 'container-sm';
@@ -46,7 +35,7 @@ buttonUp.classList.add(primary);
 todoContainer.appendChild(buttonUp);
 
 const buttonDown = document.createElement('button');
-buttonDown.id = 'mover-cima';
+buttonDown.id = 'mover-baixo';
 buttonDown.innerHTML = '<i class="fa-solid fa-arrow-down"></i>';
 buttonDown.classList.add('btn');
 buttonDown.classList.add(primary);
@@ -91,7 +80,7 @@ function criarTarefa(event) {
 }
 document.addEventListener('click', criarTarefa);
 
-function tarefasClicadas(event) {
+function selecionarTarefa(event) {
   if (event.target.classList.contains('tarefa')) {
     const tarefas = document.querySelectorAll('.tarefa');
     for (let i = 0; i < tarefas.length; i += 1) {
@@ -101,9 +90,9 @@ function tarefasClicadas(event) {
   }
 }
 
-document.addEventListener('click', tarefasClicadas);
+document.addEventListener('click', selecionarTarefa);
 
-function tarefasConcluidas(event) {
+function concluirTarefas(event) {
   if (event.target.classList.contains('tarefa')) {
     const concluida = 'completed';
     if (event.target.classList.contains(concluida)) {
@@ -114,7 +103,7 @@ function tarefasConcluidas(event) {
   }
 }
 
-document.addEventListener('dblclick', tarefasConcluidas);
+document.addEventListener('dblclick', concluirTarefas);
 
 function limparTarefas() {
   const tarefas = document.querySelectorAll('.tarefa');
@@ -138,7 +127,8 @@ function salvarTarefas() {
   const lista = oList.children;
   const tarefaObjArray = [];
   for (let i = 0; i < lista.length; i += 1) {
-    let tarefaObj = {};
+    // eslint-disable-next-line sonarjs/prefer-object-literal
+    const tarefaObj = {};
     tarefaObj.texto = lista[i].innerText;
     tarefaObj.classe = lista[i].className;
     tarefaObjArray[i] = tarefaObj;
@@ -153,7 +143,7 @@ function carregarTarefas() {
   if (localStorage.length !== 0) {
     const listaRecuperada = JSON.parse(localStorage.getItem('lista'));
     for (let i = 0; i < listaRecuperada.length; i += 1) {
-      let novoListItem = document.createElement('li');
+      const novoListItem = document.createElement('li');
       novoListItem.innerText = listaRecuperada[i].texto;
       novoListItem.className = listaRecuperada[i].classe;
       oList.appendChild(novoListItem);
@@ -166,7 +156,19 @@ window.onload = function onLoad() {
 };
 
 function movesUp() {
-  
+  // eslint-disable-next-line sonarjs/no-duplicate-string
+  const tarefaSelecionada = document.querySelector('.tarefa-clicada');
+  if (tarefaSelecionada.previousElementSibling !== null) {
+    oList.insertBefore(tarefaSelecionada, tarefaSelecionada.previousElementSibling);
+  }
+}
+buttonUp.addEventListener('click', movesUp);
+
+function movesDown() {
+  const tarefaSelecionada = document.querySelector('.tarefa-clicada');
+  if (tarefaSelecionada.nextElementSibling !== null) {
+    oList.insertBefore(tarefaSelecionada, tarefaSelecionada.nextElementSibling.nextElementSibling);
+  }
 }
 
-buttonUp.addEventListener('click', movesUp);
+buttonDown.addEventListener('click', movesDown);
