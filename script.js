@@ -87,6 +87,20 @@ function criarTarefa(event) {
 }
 document.addEventListener('click', criarTarefa);
 
+function criarTarefaEnter(event) {
+  if (event.key === 'Enter') {
+    const tarefaTexto = inputTarefa.value;
+    inputTarefa.value = '';
+    const novaTarefa = document.createElement('li');
+    novaTarefa.innerText = tarefaTexto;
+    novaTarefa.className = 'tarefa';
+    novaTarefa.classList.add('list-group-item');
+    oList.appendChild(novaTarefa);
+  }
+}
+
+document.addEventListener('keypress', criarTarefaEnter);
+
 function selecionarTarefa(event) {
   if (event.target.classList.contains('tarefa')) {
     const tarefas = document.querySelectorAll('.tarefa');
@@ -120,6 +134,17 @@ function limparTarefas() {
 }
 
 buttonLimparTarefas.addEventListener('click', limparTarefas);
+
+function limparTarefasDelete(event) {
+  if (event.key === 'Delete') {
+    const tarefas = document.querySelectorAll('.tarefa');
+    for (let i = 0; i < tarefas.length; i += 1) {
+      tarefas[i].remove();
+    }
+  }
+}
+
+document.addEventListener('keypress', limparTarefasDelete);
 
 function removerConcluidas() {
   const completed = document.querySelectorAll('.completed');
