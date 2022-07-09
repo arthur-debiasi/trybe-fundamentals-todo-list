@@ -1,23 +1,30 @@
-const main = document.createElement('main');
-main.classList.add('container-sm');
 document.body.classList.add('bg-dark');
 document.body.classList.add('bg-opacity-25');
-document.body.appendChild(main);
-const header = document.createElement('header');
-main.appendChild(header);
+
+const header = document.querySelector('header');
+
 const headerTitle = document.createElement('h1');
 header.appendChild(headerTitle);
 headerTitle.innerText = 'Minha Lista de Tarefas';
 headerTitle.classList.add('display-1');
 
 const funcionamento = document.createElement('h2');
-funcionamento.innerText =
-  'Clique duas vezes em um item para marcá-lo como completo';
+// eslint-disable-next-line operator-linebreak
+funcionamento.innerText ='Clique duas vezes em um item para marcá-lo como completo';
 funcionamento.id = 'funcionamento';
 header.appendChild(funcionamento);
 
+const main = document.querySelector('main');
+main.classList.add('container-sm');
+main.setAttribute('display', 'flex');
+
+let todoContainer = document.createElement('div');
+main.appendChild(todoContainer);
+todoContainer.id = 'todo-container';
+todoContainer.className = 'container-sm';
+
 const inputTarefa = document.createElement('input');
-main.appendChild(inputTarefa);
+todoContainer.appendChild(inputTarefa);
 inputTarefa.type = 'text';
 inputTarefa.id = 'texto-tarefa';
 inputTarefa.classList.add('form-control');
@@ -27,33 +34,49 @@ buttonCriarTarefa.id = 'criar-tarefa';
 buttonCriarTarefa.innerText = 'Criar Tarefa';
 buttonCriarTarefa.type = 'button';
 buttonCriarTarefa.classList.add('btn');
-buttonCriarTarefa.classList.add('btn-outline-primary');
-main.appendChild(buttonCriarTarefa);
+const primary = 'btn-outline-primary';
+buttonCriarTarefa.classList.add(primary);
+todoContainer.appendChild(buttonCriarTarefa);
+
+const buttonUp = document.createElement('button');
+buttonUp.id = 'mover-cima';
+buttonUp.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+buttonUp.classList.add('btn');
+buttonUp.classList.add(primary);
+todoContainer.appendChild(buttonUp);
+
+const buttonDown = document.createElement('button');
+buttonDown.id = 'mover-cima';
+buttonDown.innerHTML = '<i class="fa-solid fa-arrow-down"></i>';
+buttonDown.classList.add('btn');
+buttonDown.classList.add(primary);
+todoContainer.appendChild(buttonDown);
 
 const buttonLimparTarefas = document.createElement('button');
 buttonLimparTarefas.id = 'apaga-tudo';
 buttonLimparTarefas.innerText = 'Limpar Tarefas';
 buttonLimparTarefas.classList.add('btn');
 buttonLimparTarefas.classList.add('btn-outline-secondary');
-main.appendChild(buttonLimparTarefas);
+todoContainer.appendChild(buttonLimparTarefas);
 
 const salvarTarefasBtn = document.createElement('button');
 salvarTarefasBtn.innerHTML = 'Salvar Tarefas!';
+salvarTarefasBtn.id = 'salvar-tarefas';
 salvarTarefasBtn.classList.add('btn');
 salvarTarefasBtn.classList.add('btn-outline-success');
-main.appendChild(salvarTarefasBtn);
+todoContainer.appendChild(salvarTarefasBtn);
 
 const buttonTarefasConcluidas = document.createElement('button');
 buttonTarefasConcluidas.id = 'remover-finalizados';
 buttonTarefasConcluidas.innerText = 'Remover Tarefas Concluídas';
 buttonTarefasConcluidas.classList.add('btn');
 buttonTarefasConcluidas.classList.add('btn-outline-danger');
-main.appendChild(buttonTarefasConcluidas);
+todoContainer.appendChild(buttonTarefasConcluidas);
 
 const oList = document.createElement('ol');
 oList.id = 'lista-tarefas';
 oList.className = 'list-group list-group-numbered';
-main.appendChild(oList);
+todoContainer.appendChild(oList);
 
 function criarTarefa(event) {
   if (event.target.id === 'criar-tarefa') {
@@ -141,3 +164,9 @@ function carregarTarefas() {
 window.onload = function onLoad() {
   carregarTarefas();
 };
+
+function movesUp() {
+  
+}
+
+buttonUp.addEventListener('click', movesUp);
