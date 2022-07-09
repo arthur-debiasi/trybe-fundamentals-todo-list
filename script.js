@@ -157,18 +157,22 @@ window.onload = function onLoad() {
 
 function movesUp() {
   // eslint-disable-next-line sonarjs/no-duplicate-string
-  const tarefaSelecionada = document.querySelector('.tarefa-clicada');
-  if (tarefaSelecionada.previousElementSibling !== null) {
-    oList.insertBefore(tarefaSelecionada, tarefaSelecionada.previousElementSibling);
+  if (document.querySelector('.tarefa-clicada') !== null) {
+    const tarefaSelecionada = document.querySelector('.tarefa-clicada');
+    if (tarefaSelecionada.previousElementSibling !== null) {
+      oList.insertBefore(tarefaSelecionada, tarefaSelecionada.previousElementSibling);
+    }
   }
 }
 buttonUp.addEventListener('click', movesUp);
 
 function movesDown() {
-  const tarefaSelecionada = document.querySelector('.tarefa-clicada');
-  if (tarefaSelecionada.nextElementSibling !== null) {
-    oList.insertBefore(tarefaSelecionada, tarefaSelecionada.nextElementSibling.nextElementSibling);
+  if (document.querySelector('.tarefa-clicada') !== null) {
+    const tarefaSelecionada = document.querySelector('.tarefa-clicada');
+    if (tarefaSelecionada.nextElementSibling !== null) {
+      const nextSbln = tarefaSelecionada.nextElementSibling;
+      oList.insertBefore(tarefaSelecionada, nextSbln.nextElementSibling);
+    }
   }
 }
-
 buttonDown.addEventListener('click', movesDown);
