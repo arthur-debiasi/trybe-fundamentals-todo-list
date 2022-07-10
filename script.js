@@ -160,7 +160,10 @@ function salvarTarefas() {
   const tarefaObjArray = [];
   for (let i = 0; i < lista.length; i += 1) {
     // eslint-disable-next-line sonarjs/prefer-object-literal
-    const tarefaObj = {};
+    const tarefaObj = {
+      text: '',
+      classe: '',
+    };
     tarefaObj.texto = lista[i].innerText;
     tarefaObj.classe = lista[i].className;
     tarefaObjArray[i] = tarefaObj;
@@ -187,10 +190,11 @@ window.onload = function onLoad() {
   carregarTarefas();
 };
 
+const tarefaClicada = '.tarefa-clicada';
 function movesUp() {
   // eslint-disable-next-line sonarjs/no-duplicate-string
-  if (document.querySelector('.tarefa-clicada') !== null) {
-    const tarefaSelecionada = document.querySelector('.tarefa-clicada');
+  if (document.querySelector(tarefaClicada) !== null) {
+    const tarefaSelecionada = document.querySelector(tarefaClicada);
     if (tarefaSelecionada.previousElementSibling !== null) {
       oList.insertBefore(tarefaSelecionada, tarefaSelecionada.previousElementSibling);
     }
@@ -199,8 +203,8 @@ function movesUp() {
 buttonUp.addEventListener('click', movesUp);
 
 function movesDown() {
-  if (document.querySelector('.tarefa-clicada') !== null) {
-    const tarefaSelecionada = document.querySelector('.tarefa-clicada');
+  if (document.querySelector(tarefaClicada) !== null) {
+    const tarefaSelecionada = document.querySelector(tarefaClicada);
     if (tarefaSelecionada.nextElementSibling !== null) {
       const nextSbln = tarefaSelecionada.nextElementSibling;
       oList.insertBefore(tarefaSelecionada, nextSbln.nextElementSibling);
@@ -210,8 +214,8 @@ function movesDown() {
 buttonDown.addEventListener('click', movesDown);
 
 function removerSelecionada() {
-  if (document.querySelector('.tarefa-clicada') !== null) {
-    document.querySelector('.tarefa-clicada').remove();
+  if (document.querySelector(tarefaClicada) !== null) {
+    document.querySelector(tarefaClicada).remove();
   }
 }
 

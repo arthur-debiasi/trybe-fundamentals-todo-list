@@ -1,11 +1,12 @@
 .tarefa-clicada {
-    background-color: gray;
-    cursor: pointer;
+  background-color: gray;
+  cursor: pointer;
 }
+
 .tarefa {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .completed {
-    text-decoration: line-through solid black;
+  text-decoration: line-through solid black;
 }
