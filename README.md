@@ -1,4 +1,4 @@
-# [Trybe](https://www.betrybe.com/) Project - To Do List 
+# [Trybe](https://www.betrybe.com/) Project - [To Do List](https://arthur-debiasi.github.io/fundamentals-todo-list/) 
 To Do list Page with 
 
 ## 💻 Project
