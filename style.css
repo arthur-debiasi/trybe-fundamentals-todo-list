@@ -1,3 +1,7 @@
+header {
+  text-align: center;
+}
+
 .tarefa-clicada {
   background-color: gray;
   cursor: pointer;
