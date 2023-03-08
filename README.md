@@ -1,5 +1,5 @@
 # [Trybe](https://www.betrybe.com/) Project - [To Do List](https://arthur-debiasi.github.io/fundamentals-todo-list/) 
-To Do list Page with 
+A todo list page built with Javascript, HTML and CSS. 
 
 ## 💻 Project
 Todo list app build with HTML, CSS and Javascript. It's possible to insert, remove, move, save, delete, order and check todos as complete
