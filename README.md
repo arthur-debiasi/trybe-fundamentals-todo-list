@@ -1,4 +1,4 @@
-# [Trybe](https://www.betrybe.com/) Project - [To Do List](https://arthur-debiasi.github.io/fundamentals-todo-list/) 
+# [Trybe](https://www.betrybe.com/) Project - [To Do List](https://arthur-debiasi.github.io/trybe-fundamentals-todo-list/) 
 A todo list page built with Javascript, HTML and CSS. 
 
 ## 💻 Project
